@@ -52,7 +52,7 @@ export default function SettingsPage() {
               Change avatar
             </button>
           </div>
-          <div className="space-y-4">
+          <div className="flex flex-col gap-4">
             <Input
               label="Display Name"
               id="display-name"
@@ -65,7 +65,9 @@ export default function SettingsPage() {
               disabled
               helperText="Email cannot be changed"
             />
-            <Button variant="secondary">Update Profile</Button>
+            <div>
+              <Button variant="secondary">Update Profile</Button>
+            </div>
           </div>
         </section>
 
@@ -76,28 +78,32 @@ export default function SettingsPage() {
           <h2 className="font-display font-semibold text-lg tracking-tight text-ink-primary mb-4">
             Review Preferences
           </h2>
-          <div className="space-y-5">
+          <div className="flex flex-col gap-5">
             <Select
               label="Default review focus"
               options={focusOptions}
               id="default-focus"
             />
-            <Toggle
-              label="Include typography audit"
-              checked={typographyAudit}
-              onChange={setTypographyAudit}
-            />
-            <Toggle
-              label="Include storytelling assessment"
-              checked={storytelling}
-              onChange={setStorytelling}
-            />
-            <Toggle
-              label="Receive email when review is ready"
-              checked={emailNotify}
-              onChange={setEmailNotify}
-            />
-            <Button variant="secondary">Save Preferences</Button>
+            <div className="flex flex-col gap-4">
+              <Toggle
+                label="Include typography audit"
+                checked={typographyAudit}
+                onChange={setTypographyAudit}
+              />
+              <Toggle
+                label="Include storytelling assessment"
+                checked={storytelling}
+                onChange={setStorytelling}
+              />
+              <Toggle
+                label="Receive email when review is ready"
+                checked={emailNotify}
+                onChange={setEmailNotify}
+              />
+            </div>
+            <div>
+              <Button variant="secondary">Save Preferences</Button>
+            </div>
           </div>
         </section>
 
