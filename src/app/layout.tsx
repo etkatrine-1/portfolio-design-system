@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Syne, JetBrains_Mono } from "next/font/google";
 import { AppShell } from "@/components/AppShell";
+import { ClickSparkWrapper } from "@/components/ClickSparkWrapper";
 import "./globals.css";
 
 const inter = Inter({
@@ -33,7 +34,9 @@ export default function RootLayout({
       <body
         className={`${inter.variable} ${syne.variable} ${jetbrainsMono.variable} bg-surface-base text-ink-primary font-body antialiased`}
       >
-        <AppShell>{children}</AppShell>
+        <ClickSparkWrapper>
+          <AppShell>{children}</AppShell>
+        </ClickSparkWrapper>
 
         {/* Noise overlay */}
         <div
