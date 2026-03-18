@@ -6,9 +6,11 @@ import { validateReviewResponse } from "@/lib/reviews";
 export const maxDuration = 90;
 export const dynamic = "force-dynamic";
 
-const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY,
-});
+function getOpenAIClient() {
+  return new OpenAI({
+    apiKey: process.env.OPENAI_API_KEY!,
+  });
+}
 
 const SYSTEM_PROMPT = `You are a senior design critic and portfolio reviewer with 15+ years of experience in UX design, visual design, interaction design, and design education. You have reviewed thousands of portfolios across product design, branding, web design, and mobile apps. You provide brutally honest, specific, and actionable feedback.
 
@@ -194,6 +196,7 @@ export async function POST(request: Request) {
       },
     ];
 
+    const openai = getOpenAIClient();
     const completion = await openai.chat.completions.create({
       model: "gpt-4o",
       messages,
